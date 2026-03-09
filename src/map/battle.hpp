@@ -160,6 +160,7 @@ bool is_infinite_defense( const block_list* target, int32 flag );
 
 struct Battle_Config
 {
+	int32 arealoot_range;
 	int32 warp_point_debug;
 	int32 enable_critical;
 	int32 mob_critical_rate;

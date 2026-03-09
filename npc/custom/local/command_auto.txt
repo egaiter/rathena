@@ -1,0 +1,4 @@
+-	script	atcommand_auto	-1,{
+OnPCLoginEvent:
+atcommand "@arealoot";
+}
