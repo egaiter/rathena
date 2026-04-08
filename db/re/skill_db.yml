@@ -13658,7 +13658,17 @@ Body:
     Duration1: 600000
     Requires:
       SpCost: 8
-      ZenyCost: 1
+      ZenyCost:
+        - Level: 1
+          Amount: 1
+        - Level: 2
+          Amount: 2
+        - Level: 3
+          Amount: 3
+        - Level: 4
+          Amount: 4
+        - Level: 5
+          Amount: 5
   - Id: 501
     Name: GS_FLING
     Description: Fling

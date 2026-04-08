@@ -1,0 +1,159 @@
+// This is a custom pity system for card drops
+// A few character variables are used here:
+// pity_item - Item ID that is currently being collected
+// pity_item_name$ - Item name that is being collected
+// pity_monster - Monster ID that is currently being collected
+// pity_count - number of kills needed for the pity counter
+// pity_data[] - Integer array where the index of an item records 
+//   how many of the dropping monster have been killed
+
+function	script	pity_reset	{
+	.@mobid = getarg(0);
+	#pity_data[.@mobid] = 0;
+	#pity_count = 0;
+	#pity_monster = 0;
+	#pity_item = 0;
+	#pity_item_name$ = "";
+}
+
+function	script	pity_calc	{
+	.@mobid = getarg(0);
+	if (.@mobid == #pity_monster) {
+		// killed the target monster
+		#pity_data[.@mobid] += 1;
+		.@count = #pity_data[.@mobid];
+
+		if (.@count >= #pity_count) {
+			getmapxy .@m$,.@x,.@y,BL_PC;
+			makeitem #pity_item,1,.@m$,.@x,.@y,true;
+			announce #pity_item_name$ + " collection is complete.", bc_self;
+			callfunc "pity_reset", .@mobid;
+			return;
+		}
+
+		if (.@count % 25 == 0) {
+			announce #pity_item_name$ + " collection progress: " + .@count + " out of " + #pity_count, bc_self;
+		}
+	}
+}
+
+function	script	set_pity_item	{
+	clear;
+	mes "[Pitiful Collector]";
+	mes "What is the ID of the monster whose card you would like to collect?";
+	input .@mobid;
+	clear;
+	
+	if (callfunc("get_mob_card_data_by_id", .@mobid) == 1) {
+		.@itemid = $@return[0];
+		.@itemrate = $@return[1];
+		.@mobname$ = $@return_mobname$;
+		.@itemname$ = getitemname(.@itemid);
+		mes "[Pitiful Collector]";
+		mes "You're looking to collect "+mesitemlink(.@itemid);
+		mes "from the monster "+.@mobname$+", correct?";
+		if (select("Yes","No") == 2) {
+			clear;
+			mes "[Pitiful Collector]";
+			mes "Would you like to try again?";
+			if (select("Yes","No") == 2) {
+				return;
+			}
+			callfunc "set_pity_item";
+		}
+		// Set the pity variables
+		#pity_item = .@itemid;
+		#pity_item_name$ = .@itemname$;
+		#pity_monster = .@mobid;
+		#pity_count = 10000 / .@itemrate;
+		clear;
+		mes "[Pitiful Collector]";
+		mes "You are now guaranteed to collect "+mesitemlink(.@itemid);
+		mes "in "+#pity_count+" kills.";
+		mes "";
+		mes "Talk to me again if you would like to change which item you are collecting.";
+		return;
+	} else {
+
+		mes "[Pitiful Collector]";
+		mes "Sorry, I was unable to find a monster with the id \"" + .@mobid + "\"";
+		mes "";
+		mes "Would you like to try again?";
+		if (select("Yes","No") == 2) {
+			return;
+		}
+		callfunc "set_pity_item";
+	}
+	return;
+}
+
+function	script	get_mob_card_data_by_id	{
+	.@mob_id = getarg(0);
+	.@mob_name$ = getmonsterinfo(.@mob_id, MOB_NAME);
+	
+	if (.@mob_name$ == "null") {
+		return -1;
+	}
+	getmobdrops(.@mob_id);
+	.@count = $@MobDrop_count;
+	copyarray .@item[0],$@MobDrop_item[0],.@count;
+	copyarray .@rate[0],$@MobDrop_rate[0],.@count;
+	for( .@i = 0; .@i < .@count; .@i++ ) {	
+		if (getiteminfo(.@item[.@i], ITEMINFO_TYPE) == IT_CARD) {
+			setarray $@return[0], .@item[.@i], .@rate[.@i] * 2;
+			$@return_mobname$ = .@mob_name$;
+			return 1;
+		}
+	}
+	return -1;
+}
+
+moc_para01,35,20,3	script	Pitiful Collector#collector-1	643,{
+	if (#pity_item > 0) {
+		// Already working on an item
+		mes "[Pitiful Collector]";
+		mes "You are currently collecting "+mesitemlink(#pity_item);
+		mes "";
+		mes "Your progress is " + #pity_data[#pity_monster] + " out of " + #pity_count + ".";
+		next;
+		mes "[Pitiful Collector]";
+		mes "Would you like to change which item you are collecting?";
+		mes "";
+		mes "Note: Changing items does not delete progress on previous items";
+		if (select("No", "Yes") == 1) {
+			end;
+		}
+		clear;
+		set_pity_item;
+
+	} else {
+		// No item selected
+		mes "[Pitiful Collector]";
+		mes "Would like to activate the pity system for collecting a card?";
+		if (select("Yes", "No") == 2) {
+			end;
+		}
+		clear;
+		set_pity_item;
+	}
+	end;
+}
+
+-	script	Pity_Item_Drop	-1,{
+OnNPCKillEvent:
+	if (#pity_item > 0) {
+		.@mobid = killedrid;
+		.@pcid = getattachedrid();
+		sleep 5;
+		attachrid .@pcid;
+		getmapxy .@m$,.@x,.@y,BL_PC;
+		if(getareadropitem(.@m$,.@x - 25,.@y - 25,.@x + 25,.@y + 25,#pity_item) > 0) {
+			// Pity targeted item dropped
+			announce #pity_item_name$ + " was found, resetting pity system.", bc_self;
+			callfunc "pity_reset", .@mobid;
+			end;
+		}
+		callfunc "pity_calc", .@mobid;
+	}
+
+}
