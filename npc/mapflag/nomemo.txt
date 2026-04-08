@@ -63,7 +63,7 @@ yuno_in02	mapflag	nomemo
 yuno_in03	mapflag	nomemo
 yuno_in04	mapflag	nomemo
 yuno_in05	mapflag	nomemo
-yuno	mapflag	nomemo
+//yuno	mapflag	nomemo
 ein_in01	mapflag	nomemo
 lighthalzen	mapflag	nomemo
 yuno_pre	mapflag	nomemo

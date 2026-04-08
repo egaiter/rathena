@@ -92,6 +92,8 @@ Body:
       breakguild: true
       channel: true
       langtype: true
+      duel: true
+      accept: true
     Permissions:
       attendance: false
   - Id: 2

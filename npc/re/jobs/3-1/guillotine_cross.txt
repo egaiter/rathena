@@ -2026,7 +2026,7 @@ veins,223,180,3	script	Girl#3rdgc09	941,{
 					mes "Umm... this girl...";
 					mes "will pass around";
 					mes "a blind alley in";
-					mes "about 1 hour!";
+					mes "about 15 minutes!";
 					mes "Hehehe!";
 					erasequest 7103;
 					setquest 7104;
@@ -2296,7 +2296,7 @@ job3_guil01,79,15,1	script	Estillda#3rdgc11	919,{
 			next;
 			select("When are you supposed to meet?");
 			mes "[Estillda]";
-			mes "In a couple of hours.";
+			mes "In 30 minutes.";
 			mes "At a warehouse underground in the south.";
 			next;
 			mes "["+strcharinfo(0)+"]";

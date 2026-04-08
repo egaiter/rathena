@@ -35,8 +35,28 @@ Header:
 Body:
   - Type: Exp
     LevelDifferences:
-      - Difference: 16
+      - Difference: 26
         Rate: 40
+      - Difference: 25
+        Rate: 100
+      - Difference: 24
+        Rate: 100
+      - Difference: 23
+        Rate: 100
+      - Difference: 22
+        Rate: 100
+      - Difference: 21
+        Rate: 100
+      - Difference: 20
+        Rate: 100
+      - Difference: 19
+        Rate: 100
+      - Difference: 18
+        Rate: 100
+      - Difference: 17
+        Rate: 100
+      - Difference: 16
+        Rate: 100
       - Difference: 15
         Rate: 115
       - Difference: 14
@@ -70,11 +90,11 @@ Body:
       - Difference: -16
         Rate: 85
       - Difference: -21
-        Rate: 60
+        Rate: 80
       - Difference: -26
-        Rate: 35
+        Rate: 80
       - Difference: -31
-        Rate: 10
+        Rate: 80
   - Type: Drop
     LevelDifferences:
       - Difference: 16
