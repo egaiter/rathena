@@ -26,6 +26,7 @@ function	script	pity_calc	{
 		if (.@count >= #pity_count) {
 			getmapxy .@m$,.@x,.@y,BL_PC;
 			makeitem #pity_item,1,.@m$,.@x,.@y,true;
+			skilleffect 75,0;
 			announce #pity_item_name$ + " collection is complete.", bc_self;
 			callfunc "pity_reset", .@mobid;
 			return;
@@ -37,18 +38,39 @@ function	script	pity_calc	{
 	}
 }
 
-function	script	set_pity_item	{
+
+function	script	set_pity_item_2	{
 	clear;
 	mes "[Pitiful Collector]";
 	mes "What is the ID of the monster whose card you would like to collect?";
 	input .@mobid;
 	clear;
 	
-	if (callfunc("get_mob_card_data_by_id", .@mobid) == 1) {
-		.@itemid = $@return[0];
-		.@itemrate = $@return[1];
+	if (callfunc("get_mob_rare_items_by_id", .@mobid) == 1) {
+		.@count = $@return_count;
+		copyarray .@items[0], $@return_item[0], .@count;
+		copyarray .@item_rate[0], $@return_rate[0], .@count;
 		.@mobname$ = $@return_mobname$;
+
+		.@item_names$ = "Cancel:"+getitemname(.@items[0]);
+		for( .@i = 1; .@i < .@count; .@i++ ) {
+			.@item_names$ += ":"+getitemname(.@items[.@i]);
+		}
+		
+		mes "[Pitiful Collector]";
+		mes "Which item would you like to collect?";
+		.@choice = select(.@item_names$);
+
+		if (.@choice == 1) {
+			end;
+		}
+		clear;
+
+		.@choice -= 2; // Move to 0-indexed values
+		.@itemid = .@items[.@choice];
 		.@itemname$ = getitemname(.@itemid);
+		.@itemrate = .@item_rate[.@choice];
+
 		mes "[Pitiful Collector]";
 		mes "You're looking to collect "+mesitemlink(.@itemid);
 		mes "from the monster "+.@mobname$+", correct?";
@@ -59,7 +81,8 @@ function	script	set_pity_item	{
 			if (select("Yes","No") == 2) {
 				return;
 			}
-			callfunc "set_pity_item";
+			callfunc "set_pity_item_2";
+			return;
 		}
 		// Set the pity variables
 		#pity_item = .@itemid;
@@ -82,12 +105,12 @@ function	script	set_pity_item	{
 		if (select("Yes","No") == 2) {
 			return;
 		}
-		callfunc "set_pity_item";
+		callfunc "set_pity_item_2";
 	}
 	return;
 }
 
-function	script	get_mob_card_data_by_id	{
+function	script	get_mob_rare_items_by_id	{
 	.@mob_id = getarg(0);
 	.@mob_name$ = getmonsterinfo(.@mob_id, MOB_NAME);
 	
@@ -96,17 +119,23 @@ function	script	get_mob_card_data_by_id	{
 	}
 	getmobdrops(.@mob_id);
 	.@count = $@MobDrop_count;
+	$@return_count = 0;
 	copyarray .@item[0],$@MobDrop_item[0],.@count;
 	copyarray .@rate[0],$@MobDrop_rate[0],.@count;
 	for( .@i = 0; .@i < .@count; .@i++ ) {	
-		if (getiteminfo(.@item[.@i], ITEMINFO_TYPE) == IT_CARD) {
-			setarray $@return[0], .@item[.@i], .@rate[.@i] * 2;
+		if (.@rate[.@i] <= 100) {
+			$@return_item[$@return_count] = .@item[.@i];
+			$@return_rate[$@return_count] = .@rate[.@i] * 2;
+			$@return_count += 1;
 			$@return_mobname$ = .@mob_name$;
-			return 1;
 		}
+	}
+	if ($@return_count > 0) {
+		return 1;
 	}
 	return -1;
 }
+
 
 moc_para01,35,20,3	script	Pitiful Collector#collector-1	643,{
 	if (#pity_item > 0) {
@@ -124,7 +153,7 @@ moc_para01,35,20,3	script	Pitiful Collector#collector-1	643,{
 			end;
 		}
 		clear;
-		set_pity_item;
+		set_pity_item_2;
 
 	} else {
 		// No item selected
@@ -134,7 +163,7 @@ moc_para01,35,20,3	script	Pitiful Collector#collector-1	643,{
 			end;
 		}
 		clear;
-		set_pity_item;
+		set_pity_item_2;
 	}
 	end;
 }
