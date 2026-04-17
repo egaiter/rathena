@@ -2237,7 +2237,7 @@ que_job01,68,96,1	warp	#maobar4	2,2,que_job01,17,53
 que_job01,80,77,1	script	#maobar5	45,2,2,{
 
 OnTouch_:
-	if(mao_request > 1) warp "que_job01",61,50;
+	if(mao_request > 1 || mao_morocc2 > 4) warp "que_job01",61,50;
 	else
 	{
 		mes "[Litheron]";

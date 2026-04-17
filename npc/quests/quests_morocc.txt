@@ -225,7 +225,7 @@ OnTouch_:
 		warp "que_job01",61,50;
 		end;
 	}
-	else if (mao_request > 0) {
+	else if (mao_request > 0 || mao_morocc2 > 4) {
 		warp "que_job01",61,50;
 		end;
 	}
