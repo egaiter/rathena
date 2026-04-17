@@ -2843,6 +2843,27 @@ OnTouch_:
 			warp "que_job01",52,50;
 			end;
 		}
+	} else if ((mao_morocc2 > 21) && (mao_morocc2 < 29)) {
+		if ($@moc_mao_room2 == 0) {
+			set $@moc_mao_room2,1; //Global Variable
+			donpcevent " #room2timer::OnEnable";
+			donpcevent "Rin#moc_room2_2::OnEnable";
+			mes "[Tao]";
+			mes "The room is also sealed with a security magic spell, meow.";
+			mes "You have ^4d4dff4 minutes^000000";
+			mes "to finish your quest, meow.";
+			close2;
+			warp "que_job01",144,57;
+			end;
+		}
+		else {
+			mes "[Tao]";
+			mes "We already have a guest inside.";
+			mes "You can wait or come back later, meow.";
+			close2;
+			warp "que_job01",52,50;
+			end;
+		}
 	}
 	if(mao_request == 25 || (mao_request > 102 && mao_request < 123))
 	{
