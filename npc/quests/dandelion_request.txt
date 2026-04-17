@@ -2843,7 +2843,7 @@ OnTouch_:
 			warp "que_job01",52,50;
 			end;
 		}
-	} else if ((mao_morocc2 > 21) && (mao_morocc2 < 29)) {
+	} else if ((mao_morocc2 >= 21) && (mao_morocc2 < 29)) {
 		if ($@moc_mao_room2 == 0) {
 			set $@moc_mao_room2,1; //Global Variable
 			donpcevent " #room2timer::OnEnable";
