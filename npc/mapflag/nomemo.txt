@@ -46,7 +46,7 @@ mosk_dun01	mapflag	nomemo
 mosk_dun02	mapflag	nomemo
 mosk_dun03	mapflag	nomemo
 nameless_in	mapflag	nomemo
-niflheim	mapflag	nomemo
+//niflheim	mapflag	nomemo
 nif_in	mapflag	nomemo
 pay_arche	mapflag	nomemo
 payon_in01	mapflag	nomemo
@@ -63,7 +63,7 @@ yuno_in02	mapflag	nomemo
 yuno_in03	mapflag	nomemo
 yuno_in04	mapflag	nomemo
 yuno_in05	mapflag	nomemo
-yuno	mapflag	nomemo
+//yuno	mapflag	nomemo
 ein_in01	mapflag	nomemo
 lighthalzen	mapflag	nomemo
 yuno_pre	mapflag	nomemo
@@ -143,10 +143,10 @@ gef_fild10	mapflag	nomemo
 gef_fild11	mapflag	nomemo
 gef_fild12	mapflag	nomemo
 gef_fild14	mapflag	nomemo
-glast_01	mapflag	nomemo
+//glast_01	mapflag	nomemo
 hu_fild01	mapflag	nomemo
 hu_fild05	mapflag	nomemo
-izlu2dun	mapflag	nomemo
+//izlu2dun	mapflag	nomemo
 mjolnir_01	mapflag	nomemo
 mjolnir_02	mapflag	nomemo
 mjolnir_03	mapflag	nomemo
@@ -191,14 +191,14 @@ um_fild01	mapflag	nomemo
 um_fild02	mapflag	nomemo
 um_fild03	mapflag	nomemo
 yuno_fild02	mapflag	nomemo
-yuno_fild03	mapflag	nomemo
+//yuno_fild03	mapflag	nomemo
 yuno_fild04	mapflag	nomemo
 yuno_fild05	mapflag	nomemo
 yuno_fild07	mapflag	nomemo
 yuno_fild08	mapflag	nomemo
 yuno_fild09	mapflag	nomemo
 yuno_fild10	mapflag	nomemo
-ra_fild01	mapflag	nomemo
+//ra_fild01	mapflag	nomemo
 ra_fild02	mapflag	nomemo
 ra_fild03	mapflag	nomemo
 ra_fild04	mapflag	nomemo

@@ -2922,4 +2922,8 @@ int32 skill_shimiru_check_cell( block_list* target, va_list ap );
 #define SKILL_CHK_ABR(skill_id)   ( (skill_id) >= ABR_SKILLBASE && (skill_id) < ABR_SKILLBASE+MAX_ABRSKILL )
 #define SKILL_CHK_GUILD(skill_id) ( (skill_id) >= GD_SKILLBASE && (skill_id) < GD_SKILLBASE+MAX_GUILDSKILL )
 
+/// Random potion group for forging
+#define SKILL_FORGING_RANDOMOPT_GROUP_1 245
+#define SKILL_FORGING_RANDOMOPT_GROUP_2 246
+#define SKILL_FORGING_RANDOMOPT_GROUP_3 247
 #endif /* SKILL_HPP */

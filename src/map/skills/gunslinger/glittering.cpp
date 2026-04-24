@@ -14,9 +14,7 @@ void SkillGlittering::castendNoDamageId(block_list *src, block_list *target, uin
 
 	if (sd) {
 		clif_skill_nodamage(src, *target, getSkillId(), skill_lv);
-		if (rnd() % 100 < (20 + 10 * skill_lv))
+		for (int32 i = 0; i < skill_lv; i++)
 			pc_addspiritball(sd, skill_get_time(getSkillId(), skill_lv), 10);
-		else if (sd->spiritball > 0 && !pc_checkskill(sd, RL_RICHS_COIN))
-			pc_delspiritball(sd, 1, 0);
 	}
 }

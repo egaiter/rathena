@@ -229,11 +229,11 @@ yuno_in02,88,164,5	script	Metheus Sylphe#Library	742,{
 			mes "[Metheus Sylphe]";
 			mes "The suggested";
 			mes "donation amount is";
-			mes "1,285,000 zeny.";
+			mes "750,000 zeny.";
 			next;
 			if (select("Donate.:Cancel.") == 1) {
-				if (Zeny >= 1285000) {
-					set Zeny, Zeny-1285000;
+				if (Zeny >= 750000) {
+					set Zeny, Zeny-750000;
 					set valkyrie_Q,1;
 					mes "[Metheus Sylphe]";
 					mes "Thank you, your donation will be used for a good cause. You may";

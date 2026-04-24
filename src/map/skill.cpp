@@ -13247,6 +13247,32 @@ bool skill_produce_mix(map_session_data *sd, uint16 skill_id, t_itemid nameid, i
 			tmp_item.card[1] = ((sc*5)<<8)+ele;
 			tmp_item.card[2] = GetWord(sd->status.char_id,0); // CharId
 			tmp_item.card[3] = GetWord(sd->status.char_id,1);
+			// Apply random option
+			
+			uint16 group1_id = 0, group2_id = 0, group3_id= 0;
+			std::shared_ptr<s_random_opt_group> group1, group2, group3;
+
+			group1 = random_option_group.find( SKILL_FORGING_RANDOMOPT_GROUP_1 );
+			group2 = random_option_group.find( SKILL_FORGING_RANDOMOPT_GROUP_2 );
+			group3 = random_option_group.find( SKILL_FORGING_RANDOMOPT_GROUP_3 );
+
+			if (group1 != nullptr) {
+				group1->apply( tmp_item );
+			} else {
+				ShowWarning("Failed to find option group %d.\n", SKILL_FORGING_RANDOMOPT_GROUP_1);
+			}
+
+			if (group2 != nullptr) {
+				group2->apply( tmp_item );
+			}else {
+				ShowWarning("Failed to find option group %d.\n", SKILL_FORGING_RANDOMOPT_GROUP_2);
+			}
+
+			if (group3 != nullptr) {
+				group3->apply( tmp_item );
+			}else {
+				ShowWarning("Failed to find option group %d.\n", SKILL_FORGING_RANDOMOPT_GROUP_3);
+			}
 		} else {
 			//Flag is only used on the end, so it can be used here. [Skotlex]
 			switch (skill_id) {

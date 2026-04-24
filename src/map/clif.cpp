@@ -12036,7 +12036,7 @@ void clif_parse_TakeItem(int32 fd, map_session_data *sd)
 			//ShowDebug("arealoot_range: %d\n", range);
 
 			//Now we give the variable
-			debug_i = map_foreachinrange(skill_greed, &sd->bl, range, BL_ITEM, &sd->bl);
+			debug_i = map_foreachinallrange(skill_greed, sd, range, BL_ITEM, sd);
 
 			//Now we print it to the map-server console so you can see what it is while playing
 			//ShowDebug("@arealoot commands, debug_i = %d\n", debug_i);

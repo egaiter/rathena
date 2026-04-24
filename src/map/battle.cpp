@@ -8905,6 +8905,8 @@ static const struct _battle_data {
 	{ "enable_bonus_map_drops",             &battle_config.enable_bonus_map_drops,          1,      0,      1,              },
 	{ "hide_cloaked_units",                 &battle_config.hide_cloaked_units,              0,      0,      BL_ALL,         },
 	{ "oridecon_research_fix",              &battle_config.oridecon_research_fix,           0,      0,      1,              },
+	// Custom Stuff
+	{ "arealoot_range",                 	&battle_config.arealoot_range,              	0,      0,      INT_MAX,         },
 
 #include <custom/battle_config_init.inc>
 };

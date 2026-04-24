@@ -6828,7 +6828,7 @@ Body:
     DamageFlags:
       NoDamage: true
     SplashArea: 1
-    Duration1: 1800000
+    Duration1: 99999999
     Requires:
       SpCost: 10
       ItemCost:
@@ -13655,8 +13655,18 @@ Body:
     HitCount: 1
     Duration1: 600000
     Requires:
-      SpCost: 2
-      ZenyCost: 1
+      SpCost: 8
+      ZenyCost:
+        - Level: 1
+          Amount: 1
+        - Level: 2
+          Amount: 2
+        - Level: 3
+          Amount: 3
+        - Level: 4
+          Amount: 4
+        - Level: 5
+          Amount: 5
   - Id: 501
     Name: GS_FLING
     Description: Fling

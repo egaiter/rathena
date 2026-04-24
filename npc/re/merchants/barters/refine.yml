@@ -62,20 +62,56 @@ Body:
             Item: Elunium_Stone
             Amount: 5
       - Index: 2
+        Item: HD_Oridecon
+        RequiredItems:
+          - Index: 0
+            Item: Oridecon
+            Amount: 5
+      - Index: 3
+        Item: HD_Elunium
+        RequiredItems:
+          - Index: 0
+            Item: Elunium
+            Amount: 5
+      - Index: 4
+        Item: Enriched_Oridecon
+        RequiredItems:
+          - Index: 0
+            Item: Oridecon
+            Amount: 5
+      - Index: 5
+        Item: Enriched_Elunium
+        RequiredItems:
+          - Index: 0
+            Item: Elunium
+            Amount: 5
+      - Index: 6
         Item: Bradium
         Zeny: 50000
         RequiredItems:
           - Index: 0
             Item: Oridecon
             Amount: 3
-      - Index: 3
+      - Index: 7
         Item: Carnium
         Zeny: 50000
         RequiredItems:
           - Index: 0
             Item: Elunium
             Amount: 3
-      - Index: 4
+      - Index: 8
+        Item: HD_Bradium
+        RequiredItems:
+          - Index: 0
+            Item: Bradium
+            Amount: 5
+      - Index: 9
+        Item: HD_Carnium
+        RequiredItems:
+          - Index: 0
+            Item: Carnium
+            Amount: 5
+      - Index: 10
         Item: Carnium
         Zeny: 50000
         RequiredItems:
@@ -221,3 +257,4 @@ Body:
           - Index: 0
             Item: Zelunium_Ore
             Amount: 20
+
