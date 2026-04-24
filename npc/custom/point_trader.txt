@@ -1,0 +1,20 @@
+-	shop	point_shop1	-1,1000320:100000
+
+moc_para01,37,20,3	script	Point Trader	721,{
+	callshop "point_shop1",1;
+	npcshopattach "point_shop1";
+    end;
+
+OnBuyItem:
+	for (.@i = 0; .@i < getarraysize(@bought_nameid); .@i++){
+        if (@bought_nameid[.@i] == 1000320){
+			if (Zeny >= 100000*@bought_quantity[.@i]){
+				set Zeny, Zeny - 100000*@bought_quantity[.@i];
+				#CASHPOINTS += @bought_quantity[.@i];
+			} else {
+				mes "You don't have enough zeny.";
+				close;
+			}
+		}
+    }
+}
