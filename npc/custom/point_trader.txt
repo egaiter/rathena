@@ -1,6 +1,6 @@
--	shop	point_shop1	-1,1000320:100000
+-	shop	point_shop1	-1,no,1000320:100000
 
-moc_para01,37,20,3	script	Point Trader	721,{
+moc_para01,38,23,3	script	Point Trader	721,{
 	callshop "point_shop1",1;
 	npcshopattach "point_shop1";
     end;

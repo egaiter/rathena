@@ -100,7 +100,7 @@
 //#define ENABLE_CASHSHOP_PREVIEW_PATCH
 
 /// Uncomment for use with Nemo patch ExtendOldCashShopPreview
-//#define ENABLE_OLD_CASHSHOP_PREVIEW_PATCH
+#define ENABLE_OLD_CASHSHOP_PREVIEW_PATCH
 
 #if defined(_DEBUG) || defined(DEBUG)
 	#define DETAILED_LOADING_OUTPUT
