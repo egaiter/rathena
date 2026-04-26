@@ -7420,6 +7420,7 @@
 	export_constant(IG_RT_CH01_YGGLEAF_A);
 	export_constant(IG_RT_CH01_YGGLEAF_C);
 	export_constant(IG_RT_CH01_YGGLEAF_3);
+	export_constant(IG_CUSTOM_CARE_PACKAGE_1);
 
 	/* unit stop walking */
 	export_constant(USW_NONE);
