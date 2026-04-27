@@ -1332,7 +1332,7 @@ paramk,65,86,3	script	Cocktail Master#mora01	4_M_RAFLE_VI,{
 // Forge
 // Hans of the miner coalition
 paramk,49,103,3	script	Hans #ref01	1_M_SIGNMCNT,{
-	if ($event_paramk > 3) {
+	if ($event_paramk > 0) {
 		mes "[Hans]";
 		mes "We sell metal ores mined by our coalition.";
 		mes "If you need iron, steel, coal, or iron ores, look around.";
@@ -1360,7 +1360,7 @@ paramk,49,103,3	script	Hans #ref01	1_M_SIGNMCNT,{
 
 // Dus the Smith
 paramk,53,104,3	script	Dus the Smith#ref02	2_M_OLDBLSMITH,{
-	if ($event_paramk > 3) {
+	if ($event_paramk > 0) {
 		mes "[Dus the Smith]";
 		mes "Oridecon, Elunium, and Anvils here.";
 		mes "Not a lot, but handcrafted, you'll see.";
