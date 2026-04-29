@@ -255,7 +255,7 @@ OnInit:
 OnClock0000:
 	switch( gettime(DT_DAYOFWEEK) ) {
 	case WEDNESDAY:
-		$event_paramk = 0;
+		$event_paramk = 1;
 		break;
 	case FRIDAY:
 		$event_paramk = 2;
