@@ -26199,7 +26199,7 @@ Body:
     Jobs:
       All: true
       Novice: false
-      SuperNovice: false
+      SuperNovice: true
     Locations:
       Head_Low: true
     ArmorLevel: 1
@@ -83685,6 +83685,7 @@ Body:
     Slots: 2
     Jobs:
       BardDancer: true
+      Rogue: true
     Classes:
       All_Third: true
       Fourth: true
