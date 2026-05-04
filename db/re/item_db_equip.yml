@@ -95137,8 +95137,10 @@ Body:
     View: 1527
     Script: |
       bonus bHPGainValue,500;
+      bonus bLongHPGainValue,500;
       bonus bMagicHPGainValue,500;
       bonus bSPGainValue,50;
+      bonus bLongSPGainValue,50;
       bonus bMagicSPGainValue,50;
       if (getpetinfo(PETINFO_EGGID) == 9055) {
          if (getpetinfo(PETINFO_INTIMATE) >= PET_INTIMATE_LOYAL)
